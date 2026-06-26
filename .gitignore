@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+
+# Compiled output
+out/
+dist/
+
+# Environment
+.env
+.env.local
+.env.development
+.env.production
+
+# VS Code
+.vscode/*
+!.vscode/extensions.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+package-lock.json
+
+# Logs
+*.log
+npm-debug.log*
+
+# Extension packaging
+*.vsix

@@ -1,0 +1,62 @@
+{
+  "name": "itk",
+  "displayName": "ITK",
+  "description": "Integration Toolkit",
+  "version": "0.1.0",
+  "engines": { "vscode": "^1.100.0" },
+  "categories": ["Other"],
+  "activationEvents": ["onCommand:itk.open"],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "itk.open",
+        "title": "ITK: Open",
+        "icon": "media/icon.png"
+      },
+      {
+        "command": "itk.clearCache",
+        "title": "ITK: Clear Cache"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "itk.open",
+          "group": "navigation"
+        }
+      ]
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "itk",
+          "title": "ITK",
+          "icon": "media/icon.png"
+        }
+      ]
+    },
+    "views": {
+      "itk": [
+        {
+          "type": "webview",
+          "id": "itk.view",
+          "name": "ITK"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.100.0",
+    "@types/node": "22.x",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "node-fetch": "^2.7.0"
+  }
+}
