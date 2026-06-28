@@ -2,16 +2,22 @@
   "name": "itk",
   "displayName": "ITK",
   "description": "Integration Toolkit",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publisher": "THIHAAUNG",
   "icon": "media/icon.png",
   "repository": {
     "type": "git",
     "url": "https://github.com/Morrowga/integration-toolkit-vscode-extension"
   },
-  "engines": { "vscode": "^1.100.0" },
-  "categories": ["Other"],
-  "activationEvents": ["onCommand:itk.open"],
+  "engines": {
+    "vscode": "^1.100.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:itk.open"
+  ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
