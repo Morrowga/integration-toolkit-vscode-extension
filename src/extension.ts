@@ -320,7 +320,7 @@ export function activate(context: vscode.ExtensionContext) {
               prog, currentService, currentFeature, dbg, skpd
             )
           },
-          true // force=true — always re-run on manual check
+          false // force=true — always re-run on manual check
         )
       }
 
