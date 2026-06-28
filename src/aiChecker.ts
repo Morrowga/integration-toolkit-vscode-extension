@@ -234,7 +234,7 @@ function buildPrompt(project: ProjectInfo, flow: any, service: string, feature: 
 //  CALL SERVER
 // ─────────────────────────────────────────────────────────────
 async function callServer(prompt: string, callId: string): Promise<AnalysisResult | null> {
-  const response = await fetch('https://flow-server-nine.vercel.app/api/check', {
+  const response = await fetch('https://itk-extension.vercel.app/api/check', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ snapshot: prompt })

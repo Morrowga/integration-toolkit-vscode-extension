@@ -3,7 +3,7 @@ import * as fs from 'fs'
 import * as path from 'path'
 import { ProjectInfo, Language, Framework, DetectionSource } from './types'
 
-const FLOW_SERVER = 'https://flow-server-nine.vercel.app'
+const FLOW_SERVER = 'https://itk-extension.vercel.app'
 
 const SOURCE_EXTENSIONS = [
   '.ts','.tsx','.js','.jsx','.mjs',

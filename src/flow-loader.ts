@@ -1,7 +1,7 @@
 import * as vscode from 'vscode'
 import { ProjectInfo } from './types'
 
-const FLOW_SERVER = 'https://flow-server-nine.vercel.app'
+const FLOW_SERVER = 'https://itk-extension.vercel.app'
 const CACHE_TTL   = 7 * 24 * 60 * 60 * 1000
 
 interface CachedFlow {

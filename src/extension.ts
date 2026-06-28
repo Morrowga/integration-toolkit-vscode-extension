@@ -4,7 +4,7 @@ import { loadFlow, refreshFlow } from './flow-loader'
 import { analyzeCode, cancelPendingAI, applyCheckingState } from './aiChecker'
 import { ProjectInfo, ProjectProgress, StepProgress } from './types'
 
-const FLOW_SERVER = 'https://flow-server-nine.vercel.app'
+const FLOW_SERVER = 'https://itk-extension.vercel.app'
 
 // ─────────────────────────────────────────────────────────────
 //  PROGRESS
@@ -532,6 +532,23 @@ function css(): string {
     .checking-dots span { width: 4px; height: 4px; border-radius: 50%; background: #9cdcfe; animation: blink 1.2s ease-in-out infinite; }
     .checking-dots span:nth-child(2) { animation-delay: 0.2s; }
     .checking-dots span:nth-child(3) { animation-delay: 0.4s; }
+    .btn-help { 
+    background: transparent; 
+    border: 0.5px solid #3c3c3c; 
+    color: #555; 
+    width: 26px; 
+    height: 26px; 
+    border-radius: 50%; 
+    font-size: 12px; 
+    cursor: pointer; 
+    font-family: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color .15s, color .15s;
+  }
+  .btn-help:hover { border-color: #888; color: #ccc; }
+  .top-bar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
     @keyframes blink { 0%,100%{opacity:.2} 50%{opacity:1} }
     .loading { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 200px; gap: 12px; color: #888; font-size: 12px; }
     .spinner { width: 24px; height: 24px; border: 2px solid #3c3c3c; border-top-color: #0078d4; border-radius: 50%; animation: spin 0.8s linear infinite; }
@@ -618,9 +635,13 @@ function buildServicePicker(
   return `<!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"><style>${css()}</style></head>
 <body>
-<h1>ITK</h1>
-<p class="meta">Step-by-step API integration Toolkit</p>
-
+<div class="top-bar">
+  <div>
+    <h1>ITK</h1>
+    <p class="meta">Integration Toolkit — step-by-step API integration guide.</p>
+  </div>
+  <button class="btn-help" onclick="openHelp()" title="Help">?</button>
+</div>
 <div class="search-wrap">
   <span class="search-icon">⌕</span>
   <input class="search-input" placeholder="Search services..." oninput="filterServices(this.value)" autofocus>
@@ -635,6 +656,7 @@ function filterServices(q) {
     c.style.display = (c.dataset.name.includes(q) || c.dataset.desc.includes(q)) ? '' : 'none'
   })
 }
+function openHelp() { vscode.postMessage({ type: 'openUrl', url: 'https://itk-extension.vercel.app' }) }
 </script></body></html>`
 }
 
@@ -666,8 +688,9 @@ function buildFeaturePicker(
   return `<!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"><style>${css()}</style></head>
 <body>
-<div class="nav-row">
+<div class="nav-row" style="justify-content:space-between">
   <button class="btn btn-back" onclick="back()">← Back</button>
+  <button class="btn-help" onclick="openHelp()" title="Help">?</button>
 </div>
 <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
   ${headerLogo}
@@ -682,6 +705,7 @@ ${features}
 const vscode = acquireVsCodeApi()
 function back() { vscode.postMessage({ type: 'backToServices' }) }
 function selectFeature(id) { vscode.postMessage({ type: 'selectFeature', featureId: id }) }
+function openHelp() { vscode.postMessage({ type: 'openUrl', url: 'https://itk-extension.vercel.app' }) }
 </script></body></html>`
 }
 
@@ -727,8 +751,9 @@ function buildIntegrationScreen(
 <html lang="en"><head><meta charset="UTF-8"><style>${css()}</style></head>
 <body>
 
-<div class="nav-row">
+<div class="nav-row" style="justify-content:space-between">
   <button class="btn btn-back" onclick="back()">← Back</button>
+  <button class="btn-help" onclick="openHelp()" title="Help">?</button>
 </div>
 
 <h1>${esc(service.name)} — ${esc(feature?.label ?? featureId)}</h1>
@@ -756,6 +781,8 @@ function toggleSection(id) {
   const open = Array.from(document.querySelectorAll('.section-body.open')).map(el => el.id.replace('body-', ''))
   vscode.setState({ openSections: open })
 }
+
+function openHelp() { vscode.postMessage({ type: 'openUrl', url: 'https://itk-extension.vercel.app' }) }
 
 function back()            { vscode.postMessage({ type: 'backToFeatures' }) }
 function copy(t)           { vscode.postMessage({ type: 'copy', text: t }) }

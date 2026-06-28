@@ -3,6 +3,11 @@
   "displayName": "ITK",
   "description": "Integration Toolkit",
   "version": "0.1.0",
+  "publisher": "THIHAAUNG",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Morrowga/integration-toolkit-vscode-extension"
+  },
   "engines": { "vscode": "^1.100.0" },
   "categories": ["Other"],
   "activationEvents": ["onCommand:itk.open"],
