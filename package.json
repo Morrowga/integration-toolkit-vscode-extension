@@ -4,6 +4,7 @@
   "description": "Integration Toolkit",
   "version": "0.1.0",
   "publisher": "THIHAAUNG",
+  "icon": "media/icon.png",
   "repository": {
     "type": "git",
     "url": "https://github.com/Morrowga/integration-toolkit-vscode-extension"
